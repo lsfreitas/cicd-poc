@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-poc
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/lsfreitas/cicd-poc.git"
+    targetRevision: HEAD
+    path: kustomize-directory
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
