@@ -1,0 +1,11 @@
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying to ArgoCD"
+    - kubectl apply -k kustomize-directory/
+    - argocd app sync argo-poc
+  only:
+    - main
