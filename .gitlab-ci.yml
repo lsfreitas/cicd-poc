@@ -8,4 +8,4 @@ deploy:
     - kubectl apply -k kustomize-directory/
     - argocd app sync argo-poc
   only:
-    - develop
+    - main
